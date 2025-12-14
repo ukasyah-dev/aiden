@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "react-router-template",
+  "name": "aiden",
   "compatibility_date": "2025-12-10",
   "main": "./workers/app.ts",
 }
