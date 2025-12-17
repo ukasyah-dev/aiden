@@ -1,12 +1,17 @@
-# react-router-template
+# aiden
 
-Starting template for building [React Router](https://reactrouter.com/) apps with framework mode.
+## Local development
 
-## Tech stack
+```bash
+# Create .env file
+cp .env.example .env
 
-- React
-- React Router v7
-- Tailwind CSS
-- ESLint + Prettier
-- Husky + lint-staged
-- Cloudflare Workers (Wrangler)
+# Create db on local triggered by a command
+pnpm wrangler d1 execute DB --command "SELECT 1+1"
+
+# Push db schema
+pnpm drizzle-kit push
+
+# Run dev server
+pnpm dev
+```

@@ -3,4 +3,11 @@
   "name": "aiden",
   "compatibility_date": "2025-12-10",
   "main": "./workers/app.ts",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aiden",
+      "database_id": "e56d8aea-e37f-42cc-84fe-6ade0bab8fa3",
+    },
+  ],
 }
