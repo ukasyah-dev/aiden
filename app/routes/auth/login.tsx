@@ -13,8 +13,21 @@ import {
   Input,
 } from "emiro-ui/components";
 import { cn } from "emiro-ui/lib/utils";
+import { useForm, type SubmitHandler } from "react-hook-form";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 export default function LoginForm({ className }: React.ComponentProps<"div">) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+
   return (
     <div className={cn("flex flex-col gap-6", className)}>
       <Card className="py-8">
@@ -25,7 +38,7 @@ export default function LoginForm({ className }: React.ComponentProps<"div">) {
           </CardDescription>
         </CardHeader>
         <CardContent className="mt-4.5 px-10">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <FieldGroup>
               <Field>
                 <Button variant="outline" type="button">
@@ -47,8 +60,13 @@ export default function LoginForm({ className }: React.ComponentProps<"div">) {
                   id="email"
                   type="email"
                   placeholder="Your email address"
-                  required
+                  {...register("email", { required: true })}
                 />
+                {errors.email && (
+                  <span className="text-sm text-red-600">
+                    {errors.email.message}
+                  </span>
+                )}
               </Field>
               <Field>
                 <div className="flex items-center">
@@ -64,8 +82,13 @@ export default function LoginForm({ className }: React.ComponentProps<"div">) {
                   id="password"
                   type="password"
                   placeholder="Your password"
-                  required
+                  {...register("password", { required: true })}
                 />
+                {errors.password && (
+                  <span className="text-sm text-red-600">
+                    {errors.password.message}
+                  </span>
+                )}
               </Field>
               <Field className="gap-5 pt-2">
                 <Button type="submit">Login</Button>
